@@ -14,4 +14,8 @@ export class AppComponent {
       this.title = data.msg;
     })
   }
+
+  public sayHello(): void {
+    console.log('Hello!');
+  }
 }
