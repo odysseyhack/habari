@@ -12,10 +12,16 @@ services:
     command: ng serve --host 0.0.0.0
 
   server:
-    build: server
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
     container_name: mimea-server
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-    command: npm run start
+    volumes:
+    - ./blockchain/network:/usr/src/app/network
+    - ./blockchain/shared:/usr/src/app/shared
+    - ./blockchain/chaincode:/usr/src/app/chaincode
+    command: npm run start --host 0.0.0.0
