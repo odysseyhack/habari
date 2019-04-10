@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
+import { KonamiModule } from 'ngx-konami';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    KonamiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
