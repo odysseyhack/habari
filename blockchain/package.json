@@ -1,0 +1,20 @@
+{
+  "name": "mimea-network",
+  "version": "0.1.0",
+  "description": "MIMEA Network",
+  "scripts": {
+    "postinstall": "cd network && docker-compose pull",
+    "startHLF": "docker network create SampleConsortium 2>/dev/null; cd network && docker-compose up; cd .. && npm run tearDownHLF",
+    "tearDownHLF": "rm -rf /tmp/hfc-kvs /tmp/hfc-cvs; cd network && docker-compose down; cd .. && npm run clean"
+  },
+  "dependencies": {
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "tslint-eslint-rules": "5.4.0",
+    "tslint-microsoft-contrib": "5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "10.10.1",
+    "typescript": "3.0.3"
+  }
+}
