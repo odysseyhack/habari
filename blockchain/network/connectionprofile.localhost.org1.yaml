@@ -238,7 +238,7 @@ peers:
 certificateAuthorities:
   #Org1MSP
   ca.org1.example.com:
-    url: https://localhost:7054
+    url: https://ca.org1.example.com:7054
 
     # the properties specified under this object are passed to the 'http' client verbatim when
     # making the request to the Fabric-CA server

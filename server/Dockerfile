@@ -4,8 +4,8 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY server/package.json package.json
-COPY blockchain/network /usr/src/app/network
 COPY blockchain/shared /usr/src/app/shared
+COPY blockchain/network /usr/src/app/network
 COPY blockchain/chaincode /usr/src/app/chaincode
 COPY blockchain/crypto-config /usr/src/app/crypto-config
 
@@ -13,3 +13,5 @@ RUN npm install --loglevel error
 RUN npm cache clear --force
 
 COPY server .
+
+
