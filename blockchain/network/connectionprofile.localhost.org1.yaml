@@ -160,11 +160,11 @@ organizations:
     # this way. The SDK should allow applications to set the org admin identity via APIs, and only use
     # this route as an alternative when it exists.
     adminPrivateKey:
-      path: network/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/b750689d93fee40f32416723c6ccec0e64ce2b508dceb2b9b6154a22cf9b48aa_sk
+      path: ./crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/6f47488c942f776536dc60fd316f5435eeb0519255948de0470041cc0de91c11_sk
      #  or
      # pem: <byte string>
     signedCert:
-      path: network/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
+      path: ./crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
      #  or
      # pem: <byte string>
 
@@ -189,7 +189,7 @@ orderers:
       ssl-target-name-override: orderer.example.com
 
     tlsCACerts:
-      path: network/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+      path: ./crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
      #  or
      # pem: <byte string>
 
@@ -216,7 +216,7 @@ peers:
       ssl-target-name-override: peer0.org1.example.com
 
     tlsCACerts:
-      path: network/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: ./crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
   peer1.org1.example.com:
     # this URL is used to send endorsement and query requests
     url: grpcs://localhost:8051
@@ -228,7 +228,7 @@ peers:
       ssl-target-name-override: peer1.org1.example.com
 
     tlsCACerts:
-      path: network/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: ./crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
 
 #
 # Fabric-CA is a special kind of Certificate Authority provided by Hyperledger Fabric which allows
@@ -245,7 +245,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: network/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: ./crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
 
     # Fabric-CA supports dynamic user enrollment via REST APIs. A "root" user, a.k.a registrar, is
     # needed to enroll and invoke new users.
