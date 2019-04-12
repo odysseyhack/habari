@@ -18,20 +18,13 @@ export class BlockchainService {
     const channelWrapper = new ChannelWrapper(client);
     await channelWrapper.createAndJoinChannel();
 
-    const mychaincode: BasicChaincodeInfo = {
-      chaincodeVersion: '1',
-      chaincodeId:      'mychaincode',
-      chaincodePath:    path.join('chaincode'),
-      chaincodeType:    'node',
-    };
+    const mychaincode: BasicChaincodeInfo = this.getBasicChaincodeInfo();
 
-    // Install and instantiate chaincode
     const chaincode = new ChaincodeWrapper(client, channelWrapper.channel, mychaincode);
     await chaincode.initialize();
 
     const result = await chaincode.query(ChaincodeFunctionType.GetMarblesByRange, ['', '']);
     console.log('Result:', result);
-    // await this.helper.sleep(4000);
 
     return chaincode.getInstantiatedChaincode();
   }
@@ -46,6 +39,15 @@ export class BlockchainService {
     console.log(client);
 
     return client;
+  }
+
+  private getBasicChaincodeInfo(): BasicChaincodeInfo {
+    return {
+      chaincodeVersion: '1',
+      chaincodeId:      'mychaincode',
+      chaincodePath:    path.join('chaincode'),
+      chaincodeType:    'node',
+    };
   }
 
   getChannels(): object {
