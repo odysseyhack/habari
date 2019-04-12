@@ -1,9 +1,12 @@
-<div>
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <h2>Channels: {{channels}}</h2>
-</div>
+
 <div (konami)="sayHello()"></div>
-
-
+<app-mimea-nav></app-mimea-nav>
+<router-outlet></router-outlet>
+<footer>
+    <div class="copyright">
+        Copyright 2019 MIMEA
+    </div>
+    <div class="logo">
+        <img url="client\src\assets\images\Mimea-footer.png"/>
+    </div>
+</footer>
