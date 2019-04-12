@@ -2,7 +2,7 @@ import * as Client from 'fabric-client';
 import {Channel, ChaincodeInstallRequest, ChaincodeInvokeRequest, ProposalResponseObject,
         BroadcastResponse, ChaincodeInstantiateUpgradeRequest, ProposalResponse, ChaincodeInfo} from 'fabric-client';
 import {Helper} from '../../helper';
-import {BasicChaincodeInfo} from '../../../chaincode/models/basicChainCodeInfo.interface';
+import { BasicChaincodeInfo } from '../../entities/basicChainCodeInfo.interface';
 
 export class ChaincodeWrapper {
   private helper: Helper = new Helper();
@@ -11,6 +11,7 @@ export class ChaincodeWrapper {
   public constructor(private client: Client,
                      private channel: Channel,
                      private basicChaincodeInfo: BasicChaincodeInfo) {
+    this.helper.debug('created the Chaincode wrapper');
   }
 
   /**
@@ -182,6 +183,7 @@ export class ChaincodeWrapper {
    * in our basicChaincodeInfo object.
    */
   public async getInstantiatedChaincode(): Promise<ChaincodeInfo | undefined> {
+    this.helper.debug('Getting instantiated chaincode');
     const instantiatedChaincodesResponse = await this.channel.queryInstantiatedChaincodes(
       this.client.getPeersForOrg('')[1], true);
 

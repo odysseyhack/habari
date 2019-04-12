@@ -36,7 +36,7 @@ services:
       - ./config:/artifacts
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/crypto/msp
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/crypto/tls
-#      - ./data:/var/hyperledger/production
+    #      - ./data:/var/hyperledger/production
     ports:
       - 7050:7050
 
@@ -56,11 +56,12 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couch.peer0.org1.example.com:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
+      - CORE_PEER_MSPCONFIGPATH=/crypto/msp/
     volumes:
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/crypto/tls
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/crypto/msp
       - ./config:/etc/hyperledger/configtx
-#      - ./data/:/var/hyperledger/production
+    #      - ./data/:/var/hyperledger/production
     ports:
       - 7051:7051
       - 7053:7053
@@ -75,8 +76,8 @@ services:
       - COUCHDB_PASSWORD=
     ports:
       - 5984:5984
-#    ports:
-#      - 5984:5984 # TODO: use counter to allow multiple couchdb instances on one machine
+  #    ports:
+  #      - 5984:5984 # TODO: use counter to allow multiple couchdb instances on one machine
 
   peer1.org1.example.com:
     container_name: peer1.org1.example.com
@@ -94,11 +95,12 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couch.peer1.org1.example.com:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
+      - CORE_PEER_MSPCONFIGPATH=/crypto/msp/
     volumes:
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls:/crypto/tls
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp:/crypto/msp
       - ./config:/etc/hyperledger/configtx
-#      - ./data/:/var/hyperledger/production
+    #      - ./data/:/var/hyperledger/production
     ports:
       - 8051:7051
       - 8053:7053

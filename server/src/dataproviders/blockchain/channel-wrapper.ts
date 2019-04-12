@@ -3,13 +3,13 @@ import * as path from 'path';
 import * as Client from 'fabric-client';
 import {Channel, ChannelRequest, JoinChannelRequest, Peer} from 'fabric-client';
 import {Helper} from '../../helper';
-import {ResponseStatusType} from '../../../shared/enums/ResponseStatusType.enum';
-import {ErrorMessageType} from '../../../shared/enums/ErrorMessageType.enum';
+import { ResponseStatusType } from '../../entities/enums/ResponseStatusType.enum';
+import { ErrorMessageType } from '../../entities/enums/ErrorMessageType.enum';
 
 export class ChannelWrapper {
   private helper: Helper = new Helper();
   private readonly channelName: string = 'mychannel';
-  private readonly channelConfigPath: string = 'network/shared/channel-artifacts/channel.tx';
+  private readonly channelConfigPath: string = '../../../config/channel.tx';
 
   public constructor(private client: Client) {
   }
@@ -63,6 +63,8 @@ export class ChannelWrapper {
       if (error.message === ErrorMessageType.CREATOR_DESERIALIZE_FAILURE) {
         throw new Error(`Join channel error (are you referring to the right peer?) - ${error.message}`);
       }
+
+      throw error;
     }
   }
 
