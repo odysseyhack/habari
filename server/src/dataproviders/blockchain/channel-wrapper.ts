@@ -9,7 +9,7 @@ import {ErrorMessageType} from '../../../shared/enums/ErrorMessageType.enum';
 export class ChannelWrapper {
   private helper: Helper = new Helper();
   private readonly channelName: string = 'mychannel';
-  private readonly channelConfigPath: string = 'network/shared/channel-artifacts/channel.tx';
+  private readonly channelConfigPath: string = '../../../config/channel.tx';
 
   public constructor(private client: Client) {
   }
