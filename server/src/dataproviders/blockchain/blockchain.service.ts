@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import {Helper} from '../../helper';
-import {ChannelWrapper} from './channel-wrapper';
-import {ChaincodeWrapper} from './chaincode-wrapper';
+import { Helper } from '../../helper';
+import { ChannelWrapper } from './channel-wrapper';
+import { ChaincodeWrapper } from './chaincode-wrapper';
 import * as Client from 'fabric-client';
 import * as path from 'path';
-import {BasicChaincodeInfo} from '../../../chaincode/models/basicChainCodeInfo.interface';
-import {ChaincodeFunctionType} from '../../../shared/enums/ChainCodeFunctionType.enum';
+import { BasicChaincodeInfo } from '../../entities/basicChainCodeInfo.interface';
+import { ChaincodeFunctionType } from '../../entities/enums/ChainCodeFunctionType.enum';
 
 const CONFIG_PATH = 'network/connectionprofile.localhost.org1.yaml';
 
@@ -20,9 +20,9 @@ export class BlockchainService {
 
     const mychaincode: BasicChaincodeInfo = {
       chaincodeVersion: '1',
-      chaincodeId: 'mychaincode',
-      chaincodePath: path.join(__dirname, 'chaincode'),
-      chaincodeType: 'node'
+      chaincodeId:      'mychaincode',
+      chaincodePath:    path.join('chaincode'),
+      chaincodeType:    'node',
     };
 
     // Install and instantiate chaincode
@@ -40,7 +40,7 @@ export class BlockchainService {
     const client = Client.loadFromConfig(CONFIG_PATH);
     await client.initCredentialStores();
 
-    await client.setUserContext({username: 'admin', password: 'adminpw'});
+    await client.setUserContext({ username: 'admin', password: 'adminpw' });
 
     console.log('Client:');
     console.log(client);

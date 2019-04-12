@@ -114,25 +114,25 @@ channels:
         # Will this peer be sent transaction proposals for endorsement? The peer must
         # have the chaincode installed. The app can also use this property to decide which peers
         # to send the chaincode install request. Default: true
-        endorsingPeer: false
+        endorsingPeer: true
 
         # Will this peer be sent query proposals? The peer must have the chaincode
         # installed. The app can also use this property to decide which peers to send the
         # chaincode install request. Default: true
-        chaincodeQuery: false
+        chaincodeQuery: true
 
         # Will this peer be sent query proposals that do not require chaincodes, like
         # queryBlock(), queryTransaction(), etc. Default: true
-        ledgerQuery: false
+        ledgerQuery: true
 
         # Will this peer be the target of a SDK listener registration? All peers can
         # produce events but the app typically only needs to connect to one to listen to events.
         # Default: true
-        eventSource: false
+        eventSource: true
 
         # Will this peer be the target of Discovery requests.
         # Default: true
-        discover: false
+        discover: true
 #
 # list of participating organizations in this network
 #
@@ -181,15 +181,15 @@ organizations:
 #
 orderers:
   orderer.example.com:
-    url: grpcs://localhost:7050
+    url: grpc://orderer.example.com:7050
 
     # these are standard properties defined by the gRPC library
     # they will be passed in as-is to gRPC client constructor
-    grpcOptions:
-      ssl-target-name-override: orderer.example.com
+#    grpcOptions:
+#      ssl-target-name-override: orderer.example.com
 
     tlsCACerts:
-      path: ./crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+      path: ./crypto-config/ordererOrganizations/example.com/msp/tlscacerts/tlsca.example.com-cert.pem
      #  or
      # pem: <byte string>
 
@@ -207,25 +207,25 @@ peers:
 # Org1MSP
   peer0.org1.example.com:
     # this URL is used to send endorsement and query requests
-    url: grpcs://localhost:7051
+    url: grpc://peer0.org1.example.com:7051
 
     # eventUrl is only needed when using eventhub (default is delivery service)
-    eventUrl: grpcs://localhost:7053
+    eventUrl: grpc://peer0.org1.example.com:7053
 
-    grpcOptions:
-      ssl-target-name-override: peer0.org1.example.com
+#    grpcOptions:
+#      ssl-target-name-override: peer0.org1.example.com
 
     tlsCACerts:
       path: ./crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
   peer1.org1.example.com:
     # this URL is used to send endorsement and query requests
-    url: grpcs://localhost:8051
+    url: grpc://peer1.org1.example.com:7051
 
     # eventUrl is only needed when using eventhub (default is delivery service)
-    eventUrl: grpcs://localhost:8053
+    eventUrl: grpc://peer1.org1.example.com:7053
 
-    grpcOptions:
-      ssl-target-name-override: peer1.org1.example.com
+#    grpcOptions:
+#      ssl-target-name-override: peer1.org1.example.com
 
     tlsCACerts:
       path: ./crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
@@ -238,7 +238,7 @@ peers:
 certificateAuthorities:
   #Org1MSP
   ca.org1.example.com:
-    url: https://localhost:7054
+    url: https://ca.org1.example.com:7054
 
     # the properties specified under this object are passed to the 'http' client verbatim when
     # making the request to the Fabric-CA server

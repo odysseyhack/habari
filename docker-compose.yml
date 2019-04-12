@@ -1,4 +1,10 @@
 version: '3'
+
+networks:
+  default:
+    external:
+      name: SampleConsortium
+
 services:
   client:
     build: client
@@ -20,9 +26,11 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - CA_SERVER=ca.org1.example.com
     volumes:
-    - ./blockchain/network:/usr/src/app/network
-    - ./blockchain/shared:/usr/src/app/shared
-    - ./blockchain/chaincode:/usr/src/app/chaincode
-    - ./blockchain/crypto-config:/usr/src/app/crypto-config
+      - ./blockchain/network:/usr/src/app/network
+      - ./blockchain/shared:/usr/src/app/shared
+      - ./blockchain/chaincode:/usr/src/app/chaincode
+      - ./blockchain/crypto-config:/usr/src/app/crypto-config
+      - ./blockchain/config:/usr/src/app/config
     command: npm run start --host 0.0.0.0
