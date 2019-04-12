@@ -1,0 +1,11 @@
+{
+  "name": "mimea",
+  "version": "0.0.1",
+  "description": "MIMEA application",
+  "scripts": {
+    "startAll": "docker-compose up -d && cd blockchain && npm run startSilent",
+    "startApp": "docker-compose up",
+    "startBlockchain": "cd blockchain && npm run startHLF",
+    "stopAll": "docker rm -f $(docker ps -aq)"
+  }
+}
