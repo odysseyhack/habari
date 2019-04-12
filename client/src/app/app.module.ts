@@ -8,8 +8,10 @@ import { routing }        from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { FarmerSideComponent } from './farmer-side/farmer-side.component';
 import { DonatorSideComponent } from './donator-side/donator-side.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MimeaNavComponent } from './mimea-nav/mimea-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     FarmerSideComponent,
     DonatorSideComponent,
-    DashboardComponent
+    MimeaNavComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     KonamiModule,
     routing,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
