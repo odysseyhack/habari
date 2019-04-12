@@ -4,11 +4,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { KonamiModule } from 'ngx-konami';
 import { LoginComponent } from './login/login.component';
-import { routing } from './app.routing';
+import { routing }        from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { FarmerSideComponent } from './farmer-side/farmer-side.component';
 import { DonatorSideComponent } from './donator-side/donator-side.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MimeaNavComponent } from './mimea-nav/mimea-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegisterComponent,
     FarmerSideComponent,
     DonatorSideComponent,
-    DashboardComponent
+    MimeaNavComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     KonamiModule,
-    routing
+    routing,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
