@@ -10,13 +10,14 @@ export class FarmerUsecases {
   }
 
   public async createFarmer(unsubscribedFarmer: FarmerInterface): Promise<any> {
-    this.databaseService.use('farmers');
-
     const donor = new Farmer(unsubscribedFarmer.username,
       unsubscribedFarmer.password,
       unsubscribedFarmer.firstName,
       unsubscribedFarmer.lastName,
       unsubscribedFarmer.address);
+
+    await this.databaseService.use('farmers');
+
     return this.databaseService.insert(unsubscribedFarmer.username, donor);
   }
 }

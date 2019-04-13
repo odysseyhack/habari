@@ -7,7 +7,11 @@ export class DatabaseService {
   private database: Nano.DocumentScope<{}>;
 
   public async createDB(databaseName: string): Promise<void> {
-    await this.nano.db.create(databaseName);
+    try {
+      await this.nano.db.create(databaseName);
+    } catch (error) {
+      console.log('error in db, probably the db already exists');
+    }
   }
 
   public async use(databaseName: string): Promise<void> {

@@ -22,11 +22,6 @@ export class BlockchainService {
 
     const chaincode = new ChaincodeWrapper(client, channelWrapper.channel, mychaincode);
     await chaincode.initialize();
-
-    // const result = await chaincode.query(ChaincodeFunctionType.GetMarblesByRange, ['', '']);
-    // console.log('Result:', result);
-
-    // return chaincode.getInstantiatedChaincode();
   }
 
   private async initializeClient(): Promise<Client> {
@@ -40,7 +35,7 @@ export class BlockchainService {
 
   private getBasicChaincodeInfo(): BasicChaincodeInfo {
     return {
-      chaincodeVersion: '1',
+      chaincodeVersion: '2',
       chaincodeId:      'mychaincode',
       chaincodePath:    path.join('chaincode'),
       chaincodeType:    'node',

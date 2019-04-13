@@ -1,5 +1,5 @@
 import { DatabaseService } from '../dataproviders/database/database.service';
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { DonorInterface } from '../entities/interfaces/donor.interface';
 import { Donor } from '../entities/privateDBEntities/donor';
 
@@ -10,13 +10,14 @@ export class DonorUsecases {
   }
 
   public async createDonor(unsubscribedDonor: DonorInterface): Promise<any> {
-    this.databaseService.use('donors');
-
     const donor = new Donor(unsubscribedDonor.username,
       unsubscribedDonor.password,
       unsubscribedDonor.firstName,
       unsubscribedDonor.lastName,
       unsubscribedDonor.address);
+
+    await this.databaseService.use('donors');
+
     return this.databaseService.insert(unsubscribedDonor.username, donor);
   }
 }
