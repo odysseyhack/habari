@@ -14,6 +14,12 @@ import { DonorUsecases } from './usecases/donor.usecases';
 import { FarmerUsecases } from './usecases/farmer.usecases';
 import { FarmersController } from './entrypoints/rest/farmers/farmers.controller';
 import { BlueprintService } from './entities/services/blueprint/blueprint.service';
+import { FieldService } from './entities/services/field/field.service';
+import { MaterialService } from './entities/services/material/material.service';
+import { ProposalService } from './entities/services/proposal/proposal.service';
+import { ReportService } from './entities/services/report/report.service';
+import { ShipmentService } from './entities/services/shipment/shipment.service';
+import { SolutionService } from './entities/services/solution/solution.service';
 
 @Module({
   imports: [],
@@ -34,7 +40,13 @@ import { BlueprintService } from './entities/services/blueprint/blueprint.servic
     FarmerUsecases,
     DatabaseService,
     BlockchainService,
-    BlueprintService
+    BlueprintService,
+    FieldService,
+    MaterialService,
+    ProposalService,
+    ReportService,
+    ShipmentService,
+    SolutionService
   ],
 })
 export class AppModule {}

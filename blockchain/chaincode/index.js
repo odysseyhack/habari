@@ -1,2 +1,2 @@
 require('ts-node').register({project: 'tsconfig.json'});
-require('./marbles_chaincode');
+require('./mimea_chaincode');
