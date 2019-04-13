@@ -15,16 +15,16 @@ export class SolutionsController {
 
   @Get(':id')
   public findById(@Param('id') id: string): object {
-    return { 'data': 'TODO: solutions fields GET:id endpoint', 'id': id };
+    return { 'data': 'TODO: implement solutions GET:id endpoint', 'id': id };
   }
 
   @Put(':id')
   public update(@Param('id') id: string): object {
-    return { 'data': 'TODO: solutions fields PUT:id endpoint', 'id': id};
+    return { 'data': 'TODO: implement solutions PUT:id endpoint', 'id': id};
   }
 
   @Delete(':id')
   public remove(@Param('id') id: string): object {
-    return { 'data': 'TODO: solutions fields DELETE:id endpoint', 'id': id};
+    return { 'data': 'TODO: implement solutions DELETE:id endpoint', 'id': id};
   }
 }

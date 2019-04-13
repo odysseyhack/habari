@@ -15,4 +15,11 @@ describe('Simulate Controller', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('create', () => {
+    it('should start a simulation', async () => {
+      const result = { 'data': 'TODO: implement simulate POST endpoint' };
+      expect(await controller.simulate()).toEqual(result);
+    });
+  });
 });
