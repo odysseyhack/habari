@@ -19,36 +19,36 @@ describe('Farmers Controller', () => {
   });
 
   describe('create', () => {
-    it('should return all blueprint', async () => {
+    it('should return all farmers', async () => {
       const farmer = { username: 'username', password: 'testpass', firstName: 'firstName', lastName: 'lastName', address: 'teststreet' };
       expect(await controller.create(farmer)).toBe(farmer);
     });
   });
 
   describe('findAll', () => {
-    it('should return all blueprint', async () => {
-      const result = { 'data': 'TODO: implement blueprint GET endpoint' };
+    it('should return all farmers', async () => {
+      const result = { 'data': 'TODO: implement farmers GET endpoint' };
       expect(await controller.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
-    it('should return all blueprint', async () => {
-      const result = { 'data': 'TODO: implement blueprint GET:id endpoint', 'id': '42' };
+    it('should return all farmers', async () => {
+      const result = { 'data': 'TODO: implement farmers GET:id endpoint', 'id': '42' };
       expect(await controller.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
-    it('should return all blueprint', async () => {
-      const result = { 'data': 'TODO: implement blueprint PUT:id endpoint', 'id': '42' };
+    it('should return all farmers', async () => {
+      const result = { 'data': 'TODO: implement farmers PUT:id endpoint', 'id': '42' };
       expect(await controller.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
-    it('should return all blueprint', async () => {
-      const result = { 'data': 'TODO: implement blueprint DELETE:id endpoint', 'id': '42' };
+    it('should return all farmers', async () => {
+      const result = { 'data': 'TODO: implement farmers DELETE:id endpoint', 'id': '42' };
       expect(await controller.remove('42')).toEqual(result);
     });
   });
