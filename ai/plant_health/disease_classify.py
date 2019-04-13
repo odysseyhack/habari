@@ -18,9 +18,7 @@ POTATO_CLASSES = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___hea
 STRAWBERRY_CLASSES = ['Strawberry___Leaf_scorch', 'Strawberry___healthy']
 SUGARCANE_CLASSES = ['Sugarcane leaf spot', 'Sugarcane aphid', 'Sugarcane coal fouling']
 TOMATO_CLASSES = ['Tomato___Bacterial_spot', 'Tomato___Early_blight', 'Tomato___Late_blight', 'Tomato___Leaf_Mold','Tomato___Septoria_leaf_spot', 'Tomato___Spider_mites Two-spotted_spider_mite','Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus','Tomato___healthy']
-
 PLANT_CLASSES = {'apple': APPLE_CLASSES,'cherry': CHERRY_CLASSES,'corn': CORN_CLASSES,'grape': GRAPE_CLASSES,'peach': PEACH_CLASSES,'pepper': PEPPER_CLASSES,'potato': POTATO_CLASSES,'strawberry': STRAWBERRY_CLASSES,'sugarcane': SUGARCANE_CLASSES,'tomato': TOMATO_CLASSES,}
-
 VGG_ARCHITECTURE = 'vgg'
 INCEPTIONV3_ARCHITECTURE = 'inceptionv3'
 SUPPORTED_MODEL_TYPES = {VGG_ARCHITECTURE, INCEPTIONV3_ARCHITECTURE}
