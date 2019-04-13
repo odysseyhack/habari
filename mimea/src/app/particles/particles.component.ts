@@ -22,7 +22,7 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
       mode: 'push'
     };
   interaction = {
-    // status: 'mouseleave',
+    status: 'mouseleave',
     pos_x: 0,
     pos_y: 0,
   };
