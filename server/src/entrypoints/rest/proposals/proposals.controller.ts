@@ -1,30 +1,32 @@
 import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { ProposalService } from '../../../entities/services/proposal/proposal.service';
 
 @Controller('proposals')
 export class ProposalsController {
+  constructor(private proposalService: ProposalService) { }
 
   @Post()
   public create(): object {
-    return { 'data': 'TODO: implement proposals POST endpoint' };
+    return this.proposalService.create();
   }
 
   @Get()
   public findAll(): object {
-    return { 'data': 'TODO: implement proposals GET endpoint' };
+    return this.proposalService.findAll();
   }
 
   @Get(':id')
   public findById(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement proposals GET:id endpoint', 'id': id };
+    return this.proposalService.findById(id);
   }
 
   @Put(':id')
   public update(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement proposals PUT:id endpoint', 'id': id};
+    return this.proposalService.update(id);
   }
 
   @Delete(':id')
   public remove(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement proposals DELETE:id endpoint', 'id': id};
+    return this.proposalService.remove(id);
   }
 }

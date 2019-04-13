@@ -1,30 +1,32 @@
 import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { SolutionService } from '../../../entities/services/solution/solution.service';
 
 @Controller('solutions')
 export class SolutionsController {
+  constructor(private solutionService: SolutionService) { }
 
   @Post()
   public create(): object {
-    return { 'data': 'TODO: implement solutions POST endpoint' };
+    return this.solutionService.create();
   }
 
   @Get()
   public findAll(): object {
-    return { 'data': 'TODO: implement solutions GET endpoint' };
+    return this.solutionService.findAll();
   }
 
   @Get(':id')
   public findById(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement solutions GET:id endpoint', 'id': id };
+    return this.solutionService.findById(id);
   }
 
   @Put(':id')
   public update(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement solutions PUT:id endpoint', 'id': id};
+    return this.solutionService.update(id);
   }
 
   @Delete(':id')
   public remove(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement solutions DELETE:id endpoint', 'id': id};
+    return this.solutionService.remove(id);
   }
 }

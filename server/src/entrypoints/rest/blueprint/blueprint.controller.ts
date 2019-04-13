@@ -1,30 +1,32 @@
 import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { BlueprintService } from '../../../entities/services/blueprint/blueprint.service';
 
 @Controller('blueprint')
 export class BlueprintController {
+  constructor(private blueprintService: BlueprintService) { }
 
   @Post()
   public create(): object {
-    return { 'data': 'TODO: implement blueprint POST endpoint' };
+    return this.blueprintService.create();
   }
 
   @Get()
   public findAll(): object {
-    return { 'data': 'TODO: implement blueprint GET endpoint' };
+    return this.blueprintService.findAll();
   }
 
   @Get(':id')
   public findById(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement blueprint GET:id endpoint', 'id': id };
+    return this.blueprintService.findById(id);
   }
 
   @Put(':id')
   public update(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement blueprint PUT:id endpoint', 'id': id};
+    return this.blueprintService.update(id);
   }
 
   @Delete(':id')
   public remove(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement blueprint DELETE:id endpoint', 'id': id};
+    return this.blueprintService.remove(id);
   }
 }

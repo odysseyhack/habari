@@ -1,4 +1,4 @@
-import { ProposalStatusType } from './enums/ProposalStatusType';
+import { ProposalStatusType } from '../enums/ProposalStatusType';
 
 export class Proposal {
   public readonly id: string;

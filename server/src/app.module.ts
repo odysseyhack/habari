@@ -9,6 +9,11 @@ import { ReportsController } from './entrypoints/rest/reports/reports.controller
 import { ShipmentsController } from './entrypoints/rest/shipments/shipments.controller';
 import { SolutionsController } from './entrypoints/rest/solutions/solutions.controller';
 import { SimulateController } from './entrypoints/rest/simulate/simulate.controller';
+import { DonorsController } from './entrypoints/rest/donors/donors.controller';
+import { DonorUsecases } from './usecases/donor.usecases';
+import { FarmerUsecases } from './usecases/farmer.usecases';
+import { FarmersController } from './entrypoints/rest/farmers/farmers.controller';
+import { BlueprintService } from './entities/services/blueprint/blueprint.service';
 
 @Module({
   imports: [],
@@ -16,6 +21,8 @@ import { SimulateController } from './entrypoints/rest/simulate/simulate.control
     AppController,
     FieldsController,
     MaterialsController,
+    DonorsController,
+    FarmersController,
     ProposalsController,
     ReportsController,
     ShipmentsController,
@@ -23,8 +30,11 @@ import { SimulateController } from './entrypoints/rest/simulate/simulate.control
     SimulateController
   ],
   providers: [
+    DonorUsecases,
+    FarmerUsecases,
     DatabaseService,
-    BlockchainService
+    BlockchainService,
+    BlueprintService
   ],
 })
 export class AppModule {}
