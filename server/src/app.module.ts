@@ -9,6 +9,7 @@ import { ReportsController } from './entrypoints/rest/reports/reports.controller
 import { ShipmentsController } from './entrypoints/rest/shipments/shipments.controller';
 import { SolutionsController } from './entrypoints/rest/solutions/solutions.controller';
 import { SimulateController } from './entrypoints/rest/simulate/simulate.controller';
+import { BlueprintService } from './entities/services/blueprint/blueprint.service';
 
 @Module({
   imports: [],
@@ -24,7 +25,8 @@ import { SimulateController } from './entrypoints/rest/simulate/simulate.control
   ],
   providers: [
     DatabaseService,
-    BlockchainService
+    BlockchainService,
+    BlueprintService
   ],
 })
 export class AppModule {}

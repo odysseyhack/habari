@@ -1,53 +1,50 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { ProposalsController } from './proposals.controller';
+import { ProposalService } from '../../../entities/services/proposal/proposal.service';
 
 describe('Proposals Controller', () => {
-  let controller: ProposalsController;
+  let proposalsController: ProposalsController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProposalsController],
-    }).compile();
-
-    controller = module.get<ProposalsController>(ProposalsController);
+    const proposalService = new ProposalService();
+    proposalsController = new ProposalsController(proposalService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(proposalsController).toBeDefined();
   });
 
   describe('create', () => {
     it('should return all proposals', async () => {
       const result = { 'data': 'TODO: implement proposals POST endpoint' };
-      expect(await controller.create()).toEqual(result);
+      expect(await proposalsController.create()).toEqual(result);
     });
   });
 
   describe('findAll', () => {
     it('should return all proposals', async () => {
       const result = { 'data': 'TODO: implement proposals GET endpoint' };
-      expect(await controller.findAll()).toEqual(result);
+      expect(await proposalsController.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
     it('should return all proposals', async () => {
       const result = { 'data': 'TODO: implement proposals GET:id endpoint', 'id': '42' };
-      expect(await controller.findById('42')).toEqual(result);
+      expect(await proposalsController.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
     it('should return all proposals', async () => {
       const result = { 'data': 'TODO: implement proposals PUT:id endpoint', 'id': '42' };
-      expect(await controller.update('42')).toEqual(result);
+      expect(await proposalsController.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
     it('should return all proposals', async () => {
       const result = { 'data': 'TODO: implement proposals DELETE:id endpoint', 'id': '42' };
-      expect(await controller.remove('42')).toEqual(result);
+      expect(await proposalsController.remove('42')).toEqual(result);
     });
   });
 });

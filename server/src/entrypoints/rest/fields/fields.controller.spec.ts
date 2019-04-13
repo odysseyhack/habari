@@ -1,53 +1,50 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { FieldsController } from './fields.controller';
+import { FieldService } from '../../../entities/services/field/field.service';
 
 describe('Fields Controller', () => {
-  let controller: FieldsController;
+  let fieldsController: FieldsController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [FieldsController],
-    }).compile();
-
-    controller = module.get<FieldsController>(FieldsController);
+    const fieldService = new FieldService();
+    fieldsController = new FieldsController(fieldService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(fieldsController).toBeDefined();
   });
 
   describe('create', () => {
     it('should return all fields', async () => {
       const result = { 'data': 'TODO: implement fields POST endpoint' };
-      expect(await controller.create()).toEqual(result);
+      expect(await fieldsController.create()).toEqual(result);
     });
   });
 
   describe('findAll', () => {
     it('should return all fields', async () => {
       const result = { 'data': 'TODO: implement fields GET endpoint' };
-      expect(await controller.findAll()).toEqual(result);
+      expect(await fieldsController.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
     it('should return all fields', async () => {
       const result = { 'data': 'TODO: implement fields GET:id endpoint', 'id': '42' };
-      expect(await controller.findById('42')).toEqual(result);
+      expect(await fieldsController.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
     it('should return all fields', async () => {
       const result = { 'data': 'TODO: implement fields PUT:id endpoint', 'id': '42' };
-      expect(await controller.update('42')).toEqual(result);
+      expect(await fieldsController.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
     it('should return all fields', async () => {
       const result = { 'data': 'TODO: implement fields DELETE:id endpoint', 'id': '42' };
-      expect(await controller.remove('42')).toEqual(result);
+      expect(await fieldsController.remove('42')).toEqual(result);
     });
   });
 });
