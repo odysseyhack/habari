@@ -27,8 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@mdi/font/css/materialdesignicons.min.css",
               "src/sass/styles.scss"
             ],
             "scripts": [

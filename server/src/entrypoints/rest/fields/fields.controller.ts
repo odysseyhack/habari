@@ -1,30 +1,32 @@
 import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { FieldService } from '../../../entities/services/field/field.service';
 
 @Controller('fields')
 export class FieldsController {
+  constructor(private fieldsService: FieldService) { }
 
   @Post()
   public create(): object {
-    return { 'data': 'TODO: implement fields POST endpoint' };
+    return this.fieldsService.create();
   }
 
   @Get()
   public findAll(): object {
-    return { 'data': 'TODO: implement fields GET endpoint' };
+    return this.fieldsService.findAll();
   }
 
   @Get(':id')
   public findById(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement fields GET:id endpoint', 'id': id };
+    return this.fieldsService.findById(id);
   }
 
   @Put(':id')
   public update(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement fields PUT:id endpoint', 'id': id};
+    return this.fieldsService.update(id);
   }
 
   @Delete(':id')
   public remove(@Param('id') id: string): object {
-    return { 'data': 'TODO: implement fields DELETE:id endpoint', 'id': id};
+    return this.fieldsService.remove(id);
   }
 }

@@ -7,14 +7,14 @@ networks:
 
 services:
   client:
-    build: client
+    build: mimea
     container_name: mimea-client
     ports:
       - "4200:4200"
       - "49153:49153"
     volumes:
-      - ./client/src:/usr/src/app/src
-      - ./client/tslint.json:/usr/src/app/tslint.json
+      - ./mimea/src:/usr/src/app/src
+      - ./mimea/tslint.json:/usr/src/app/tslint.json
     command: ng serve --host 0.0.0.0
 
   server:
