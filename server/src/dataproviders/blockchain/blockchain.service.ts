@@ -23,10 +23,10 @@ export class BlockchainService {
     const chaincode = new ChaincodeWrapper(client, channelWrapper.channel, mychaincode);
     await chaincode.initialize();
 
-    const result = await chaincode.query(ChaincodeFunctionType.GetMarblesByRange, ['', '']);
-    console.log('Result:', result);
+    // const result = await chaincode.query(ChaincodeFunctionType.GetMarblesByRange, ['', '']);
+    // console.log('Result:', result);
 
-    return chaincode.getInstantiatedChaincode();
+    // return chaincode.getInstantiatedChaincode();
   }
 
   private async initializeClient(): Promise<Client> {
@@ -34,9 +34,6 @@ export class BlockchainService {
     await client.initCredentialStores();
 
     await client.setUserContext({ username: 'admin', password: 'adminpw' });
-
-    console.log('Client:');
-    console.log(client);
 
     return client;
   }
@@ -48,9 +45,5 @@ export class BlockchainService {
       chaincodePath:    path.join('chaincode'),
       chaincodeType:    'node',
     };
-  }
-
-  getChannels(): object {
-    return this.start();
   }
 }
