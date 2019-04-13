@@ -6,26 +6,8 @@ from PIL import Image
 from tensorflow.python.keras.models import load_model
 from tensorflow.python.keras.preprocessing import image
 from tensorflow.python.keras.applications.inception_v3 import preprocess_input
-APPLE = 'apple'
-BEAN = 'bean'
-BLUEBERRY = 'blueberry'
-CHERRY = 'cherry'
-CORN = 'corn'
-GRAPE = 'grape'
-GRAPEFRUIT = 'grapefruit'
-ORANGE = 'orange'
-PEACH = 'peach'
-PEPPER = 'pepper'
-POTATO = 'potato'
-RASPBERRY = 'raspberry'
-SORGHUM = 'sorghum'
-SOYBEAN = 'soybean'
-SQUASH = 'squash'
-STRAWBERRY = 'strawberry'
-SUGARCANE = 'sugarcane'
-TOMATO = 'tomato'
-SPECIES = [APPLE, BEAN, BLUEBERRY, CHERRY, CORN, GRAPE, GRAPEFRUIT, ORANGE, PEACH,PEPPER, POTATO, RASPBERRY, SORGHUM, SOYBEAN, SQUASH, STRAWBERRY, SUGARCANE, TOMATO]
-DISEASE_SUPPORTED_SPECIES = {APPLE, CHERRY, CORN, GRAPE, PEACH, PEPPER, POTATO, STRAWBERRY, SUGARCANE, TOMATO, }
+SPECIES = ['apple', 'bean', 'blueberry', 'cherry', 'corn', 'grape', 'grapefruit', 'orange', 'peach','pepper', 'potato', 'raspberry', 'sorghum', 'soybean', 'squash', 'strawberry', 'sugarcane', 'tomato']
+DISEASE_SUPPORTED_SPECIES = {'apple', 'cherry', 'corn', 'grape', 'peach', 'pepper', 'potato', 'strawberry', 'sugarcane', 'tomato', }
 APPLE_CLASSES = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy']
 CHERRY_CLASSES = ['Cherry_(including_sour)___Powdery_mildew', 'Cherry_(including_sour)___healthy']
 CORN_CLASSES = ['Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Corn_(maize)___Common_rust_','Corn_(maize)___Northern_Leaf_Blight', 'Corn_(maize)___healthy']
@@ -37,7 +19,7 @@ STRAWBERRY_CLASSES = ['Strawberry___Leaf_scorch', 'Strawberry___healthy']
 SUGARCANE_CLASSES = ['Sugarcane leaf spot', 'Sugarcane aphid', 'Sugarcane coal fouling']
 TOMATO_CLASSES = ['Tomato___Bacterial_spot', 'Tomato___Early_blight', 'Tomato___Late_blight', 'Tomato___Leaf_Mold','Tomato___Septoria_leaf_spot', 'Tomato___Spider_mites Two-spotted_spider_mite','Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus','Tomato___healthy']
 
-PLANT_CLASSES = {APPLE: APPLE_CLASSES,CHERRY: CHERRY_CLASSES,CORN: CORN_CLASSES,GRAPE: GRAPE_CLASSES,PEACH: PEACH_CLASSES,PEPPER: PEPPER_CLASSES,POTATO: POTATO_CLASSES,STRAWBERRY: STRAWBERRY_CLASSES,SUGARCANE: SUGARCANE_CLASSES,TOMATO: TOMATO_CLASSES,}
+PLANT_CLASSES = {'apple': APPLE_CLASSES,'cherry': CHERRY_CLASSES,'corn': CORN_CLASSES,'grape': GRAPE_CLASSES,'peach': PEACH_CLASSES,'pepper': PEPPER_CLASSES,'potato': POTATO_CLASSES,'strawberry': STRAWBERRY_CLASSES,'sugarcane': SUGARCANE_CLASSES,'tomato': TOMATO_CLASSES,}
 
 VGG_ARCHITECTURE = 'vgg'
 INCEPTIONV3_ARCHITECTURE = 'inceptionv3'
@@ -45,8 +27,8 @@ SUPPORTED_MODEL_TYPES = {VGG_ARCHITECTURE, INCEPTIONV3_ARCHITECTURE}
 DISEASE_DETECTION = 'disease_detection'
 SPECIES_DETECTION = 'species_detection'
 TARGET_IMAGE_SIZES = {VGG_ARCHITECTURE: {DISEASE_DETECTION: (64, 64),SPECIES_DETECTION: (100, 100),},INCEPTIONV3_ARCHITECTURE: {DISEASE_DETECTION: (100, 100),SPECIES_DETECTION: (100, 100),}}
-VGG_MODELS = {APPLE: 'Apple_0.9395_VGG.h5',CHERRY: 'Cherry_0.9873_VGG.h5',CORN: 'Corn_0.8926_VGG.h5',GRAPE: 'Grape_0.9293_VGG.h5',PEACH: 'Peach_97_VGG.h5',TOMATO: 'Tomato_0.8675_VGG.h5',PEPPER: 'pepper_95.90.h5',POTATO: 'potato_90.62.h5',STRAWBERRY: 'starwberry_99.h5',SUGARCANE: 'Sugarcane_0.8356_VGG.h5'}
-INCEPTIONV3_MODELS = {APPLE: 'InceptionV3-scratch_segApple.h5',CHERRY: 'InceptionV3-scratch_segCherry.h5',CORN: 'InceptionV3-scratch_segCorn.h5',GRAPE: 'InceptionV3-scratch_segGrape.h5',PEACH: 'InceptionV3-scratch_segPeach.h5',TOMATO: 'InceptionV3-scratch_segTomato.h5',PEPPER: 'InceptionV3-scratch_segPepper.h5',POTATO: 'InceptionV3-scratch_segPotato.h5',STRAWBERRY: 'InceptionV3-scratch_segStrawberry.h5',SUGARCANE: 'InceptionV3-scratch_segSugarcane.h5'}
+VGG_MODELS = {'apple': 'Apple_0.9395_VGG.h5','cherry': 'Cherry_0.9873_VGG.h5','corn': 'Corn_0.8926_VGG.h5','grape': 'Grape_0.9293_VGG.h5','peach': 'Peach_97_VGG.h5','tomato': 'Tomato_0.8675_VGG.h5','pepper': 'pepper_95.90.h5','potato': 'potato_90.62.h5','strawberry': 'starwberry_99.h5','sugarcane': 'Sugarcane_0.8356_VGG.h5'}
+INCEPTIONV3_MODELS = {'apple': 'InceptionV3-scratch_segApple.h5','cherry': 'InceptionV3-scratch_segCherry.h5','corn': 'InceptionV3-scratch_segCorn.h5','grape': 'InceptionV3-scratch_segGrape.h5','peach': 'InceptionV3-scratch_segPeach.h5','tomato': 'InceptionV3-scratch_segTomato.h5','pepper': 'InceptionV3-scratch_segPepper.h5','potato': 'InceptionV3-scratch_segPotato.h5','strawberry': 'InceptionV3-scratch_segStrawberry.h5','sugarcane': 'InceptionV3-scratch_segSugarcane.h5'}
 MODEL_STORAGE_BASE = 'Plant_Disease_Detection_Benchmark_models/Models'
 
 
