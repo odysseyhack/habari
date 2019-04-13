@@ -8,7 +8,6 @@ import { DonatorSideComponent } from './components/donator-side/donator-side.com
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ParticlesComponent } from './particles/particles.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { ParticlesComponent } from './particles/particles.component';
     DonatorSideComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
-    ParticlesComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,16 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   linkWidth = 0.5;
   moveSpeed = 1.5;
   size = 1.5;
-  repulseDistance = 140;
+  repulseDistance = 30;
   repulseDuration = 0.4;
   canvasHeight = 0;
   canvasWidth = 0;
+  onclick: {
+      enable: true,
+      mode: 'push'
+    };
   interaction = {
-    status: 'mouseleave',
+    // status: 'mouseleave',
     pos_x: 0,
     pos_y: 0,
   };
@@ -60,38 +64,9 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
     this.canvas.height = this.canvasHeight;
   }
 
-  createParticle(): SingleParticle {
-    let x = Math.random() * this.canvasWidth;
-    let y = Math.random() * this.canvasHeight;
-    const vx = Math.random() - 0.5;
-    const vy = Math.random() - 0.5;
+  createParticle(): SingleParticle { let x = Math.random() * this.canvasWidth; let y = Math.random() * this.canvasHeight; const vx = Math.random() - 0.5; const vy = Math.random() - 0.5; if (x > this.canvasWidth - this.size * 2) { x = x - this.size; } else if (x < this.size * 2) { x = x + this.size; } if (y > this.canvasHeight - this.size * 2) { y = y - this.size; } else if (y < this.size * 2) { y = y + this.size; } return { x: x, y: y, vx: vx, vy: vy }; }
 
-    if (x > this.canvasWidth - this.size * 2) {
-      x = x - this.size;
-    } else if (x < this.size * 2) {
-      x = x + this.size;
-    }
-    if (y > this.canvasHeight - this.size * 2) {
-      y = y - this.size;
-    } else if (y < this.size * 2) {
-      y = y + this.size;
-    }
-
-    return {
-      x: x,
-      y: y,
-      vx: vx,
-      vy: vy
-    };
-  }
-
-  draw(p: SingleParticle) {
-    this.context.fillStyle = 'rgba(255,255,255, 1)';
-    this.context.beginPath();
-    this.context.arc(p.x, p.y, this.size, 0, Math.PI * 2, false);
-    this.context.closePath();
-    this.context.fill();
-  }
+  draw(p: SingleParticle) { this.context.fillStyle = 'rgba(255,255,255, 1)'; this.context.beginPath(); this.context.arc(p.x, p.y, this.size, 0, Math.PI * 2, false); this.context.closePath(); this.context.fill(); }
 
   particlesDraw() {
     this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -102,48 +77,11 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   }
 
   update() {
-    let p: SingleParticle = {
-      vx: 0,
-      vy: 0,
-      x: 0,
-      y: 0
-    };
-    let p2: SingleParticle = {
-      vx: 0,
-      vy: 0,
-      x: 0,
-      y: 0
-    };
+    let p: SingleParticle = {vx: 0, vy: 0, x: 0, y: 0 };
+    let p2: SingleParticle = { vx: 0, vy: 0, x: 0, y: 0};
     let ms = 0;
 
-    for (let i = 0, l = this.particlesList.length; i < l; i++) {
-      p = this.particlesList[i];
-      ms = this.moveSpeed / 2;
-      p.x += p.vx * ms;
-      p.y += p.vy * ms;
-
-      if (p.x - this.size > this.canvasWidth) {
-        p.x = - this.size;
-        p.y = Math.random() * this.canvasHeight;
-      } else if (p.x + this.size < 0) {
-        p.x = this.canvasWidth + this.size;
-        p.y = Math.random() * this.canvasHeight;
-      }
-      if (p.y - this.size > this.canvasHeight) {
-        p.y = - this.size;
-        p.x = Math.random() * this.canvasWidth;
-      } else if (p.y + this.size < 0) {
-        p.y = this.canvasHeight + this.size;
-        p.x = Math.random() * this.canvasWidth;
-      }
-      if (this.interaction.status === 'mousemove') {
-        this.repulse(p);
-      }
-      for (let j = i + 1; j < l; j++) {
-        p2 = this.particlesList[j];
-        this.linkParticles(p, p2);
-      }
-    }
+    for (let i = 0, l = this.particlesList.length; i < l; i++) { p = this.particlesList[i]; ms = this.moveSpeed / 2; p.x += p.vx * ms; p.y += p.vy * ms; if (p.x - this.size > this.canvasWidth) { p.x = - this.size; p.y = Math.random() * this.canvasHeight; } else if (p.x + this.size < 0) { p.x = this.canvasWidth + this.size; p.y = Math.random() * this.canvasHeight; } if (p.y - this.size > this.canvasHeight) { p.y = - this.size; p.x = Math.random() * this.canvasWidth; } else if (p.y + this.size < 0) { p.y = this.canvasHeight + this.size; p.x = Math.random() * this.canvasWidth; } if (this.interaction.status === 'mousemove') { this.repulse(p); } for (let j = i + 1; j < l; j++) { p2 = this.particlesList[j]; this.linkParticles(p, p2); } }
   }
 
   repulse(p: SingleParticle) {
@@ -183,10 +121,4 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
 
 
 }
-
-interface SingleParticle {
-  vx: number;
-  vy: number;
-  x: number;
-  y: number;
-}
+interface SingleParticle { vx: number; vy: number; x: number; y: number; }

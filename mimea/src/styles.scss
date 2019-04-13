@@ -11,3 +11,11 @@
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0); // IE9 and down
   }
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
