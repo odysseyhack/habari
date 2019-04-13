@@ -45,7 +45,7 @@ export class BlockchainService {
 
   private getBasicChaincodeInfo(): BasicChaincodeInfo {
     return {
-      chaincodeVersion: '1',
+      chaincodeVersion: '4',
       chaincodeId:      'mychaincode',
       chaincodePath:    path.join('chaincode'),
       chaincodeType:    'node',
