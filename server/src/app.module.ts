@@ -13,6 +13,7 @@ import { DonorsController } from './entrypoints/rest/donors/donors.controller';
 import { DonorUsecases } from './usecases/donor.usecases';
 import { FarmerUsecases } from './usecases/farmer.usecases';
 import { FarmersController } from './entrypoints/rest/farmers/farmers.controller';
+import { BlueprintService } from './entities/services/blueprint/blueprint.service';
 
 @Module({
   imports: [],
@@ -32,7 +33,8 @@ import { FarmersController } from './entrypoints/rest/farmers/farmers.controller
     DonorUsecases,
     FarmerUsecases,
     DatabaseService,
-    BlockchainService
+    BlockchainService,
+    BlueprintService
   ],
 })
 export class AppModule {}
