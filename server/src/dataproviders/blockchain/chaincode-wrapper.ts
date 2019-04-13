@@ -27,18 +27,21 @@ export class ChaincodeWrapper {
    */
   public async initialize(): Promise<any> {
     const instantiatedChaincode = await this.getInstantiatedChaincode();
+    try {
+      this.helper.debug('Going to install chaincode...');
+      await this.install();
 
-    this.helper.debug('Going to install chaincode...');
-    await this.install();
+      if (this.isTheInstantiatedVersionUpToDate(instantiatedChaincode)) {
+        return;
+      }
 
-    if (this.isTheInstantiatedVersionUpToDate(instantiatedChaincode)) {
-      return;
-    }
-
-    if (typeof instantiatedChaincode !== 'undefined') {
-      await this.upgrade();
-    } else {
-      await this.instantiate();
+      if (typeof instantiatedChaincode !== 'undefined') {
+        await this.upgrade();
+      } else {
+        await this.instantiate();
+      }
+    } catch (error) {
+      this.helper.debug(error.message);
     }
   }
 
@@ -113,9 +116,9 @@ export class ChaincodeWrapper {
     let payload: string = '';
 
     proposalResponseObject[0].forEach((response: ProposalResponse | Error, index: number) => {
-      const errorMessage = (response as Error).message;
+      (response as Error).message;
 
-      if (errorMessage) {
+      if (!(response as Error).message) {
         this.helper.debug(`[${index}] ${logPrefix}. ${(response as ProposalResponse).response.status}`);
         payload = (response as ProposalResponse).response.payload.toString('utf8');
       }

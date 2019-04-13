@@ -1,9 +1,26 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { BlockchainService } from './dataproviders/blockchain/blockchain.service';
+import { DatabaseService } from './dataproviders/database/database.service';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  await app.listen(3000);
+export class Main {
+  public async bootstrap() {
+    const app = await NestFactory.create(AppModule);
+    app.enableCors();
+
+
+    this.createPublicDBDatabases();
+    new BlockchainService().start();
+
+    await app.listen(3000);
+  }
+
+  private async createPublicDBDatabases(): Promise<void> {
+    const databaseService = new DatabaseService();
+    await databaseService.createDB('_users');
+    await databaseService.createDB('_replicator');
+    await databaseService.createDB('_global_changes');
+  }
 }
-bootstrap();
+
+new Main().bootstrap();
