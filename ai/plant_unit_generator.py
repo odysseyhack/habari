@@ -1,79 +1,38 @@
-'''
-This script counts the number of damage events on a plant, and allocates it across the time series according to interpolation.
-
-It replaces the build_data() function in the original script.
-
-Input:
----------
-- d
-
-
-'''
-# Native libraries
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 import os
-# Public libraries
 import numpy as np
 import pandas as pd
 import seaborn as sns
-
 from sklearn import pipeline
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, normalize
 from sklearn.feature_selection import VarianceThreshold
-
 from tqdm import tqdm
-import numpy as np
-
 from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM,GRU
-from keras.layers import Activation
-from keras.layers import Masking
-from keras.layers import BatchNormalization
+from keras.layers import Dense, LSTM, GRU, Activation, Masking, BatchNormalization, Lambda
 import keras.backend as K
 from keras import callbacks
-
-from sklearn.preprocessing import normalize
-from sklearn import pipeline
-from sklearn.feature_selection import VarianceThreshold
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-
-import pandas as pd
-
-from six.moves import xrange
-import matplotlib.pyplot as plt
 import keras
-import math
-
-from keras.layers import Lambda
 from keras.layers.wrappers import TimeDistributed
-
 from keras.optimizers import RMSprop,adam
 from keras.callbacks import History
-
+from six.moves import xrange
+import matplotlib.pyplot as plt
+import math
 import wtte.weibull as weibull
 import wtte.wtte as wtte
 from wtte.wtte import WeightWatcher
-
-import seaborn as sns
-
-# Custom libraries
 import utils as ut
 import weibull_functions as wbf
+event_obj = ut.EventMap(10.0)
 
-print("Loaded external libraries.")
-
-
+def split_time_intervals(total_interval, eventless_interval, num_events):
 '''
 Transform plant unit number to different indices, based on number of damage events in sequence. Then feed this array into the original build damage function.
 
 Use test_y_vec to provide the training data. Validation now becomes impossible on the training data, but can be done with real plant data.
 '''
-event_obj = ut.EventMap(10.0)
-
-def split_time_intervals(total_interval, eventless_interval, num_events):
     total_interval = int(total_interval)
     eventless_interval = int(eventless_interval)
     num_events = int(num_events)

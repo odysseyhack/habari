@@ -32,9 +32,6 @@ export class ChannelWrapper {
     const response = await this.client.createChannel(await this.buildCreateChannelRequest(config, signatures));
 
     this.helper.debug(`Create channel ${response.status}`);
-    if (response.status !== ResponseStatusType.BAD_REQUEST) {
-      throw new Error(response.info);
-    }
 
     await this.helper.sleep(5000);
   }
