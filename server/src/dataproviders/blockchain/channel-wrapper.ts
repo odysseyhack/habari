@@ -40,10 +40,14 @@ export class ChannelWrapper {
   }
 
   public async join(): Promise<void> {
-    const targetPeers: Peer[] = await this.getTargetsForJoinChannelRequest();
-    this.helper.debug(`Joining channel with ${targetPeers.length} peers of ${this.client.getMspid()}`);
+    try {
+      const targetPeers: Peer[] = await this.getTargetsForJoinChannelRequest();
+      this.helper.debug(`Joining channel with ${targetPeers.length} peers of ${this.client.getMspid()}`);
 
-    await this.channel.joinChannel(await this.buildJoinChannelRequest(targetPeers));
+      await this.channel.joinChannel(await this.buildJoinChannelRequest(targetPeers));
+    } catch (error) {
+      throw error;
+    }
   }
 
   private async getGenesisBlockForChannel(): Promise<any> {

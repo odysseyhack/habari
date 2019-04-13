@@ -1,16 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BlueprintController } from './blueprint.controller';
-import { DonorUsecases } from '../../../usecases/donor.usecases';
+import { FarmersController } from './farmers.controller';
+import { FarmerUsecases } from '../../../usecases/farmer.usecases';
 
-describe('Blueprint Controller', () => {
-  let controller: BlueprintController;
+describe('Farmers Controller', () => {
+  let controller: FarmersController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [BlueprintController],
+      controllers: [FarmersController],
+      providers:   [{ provide: FarmerUsecases, useValue: {createFarmer: (farmer) => farmer} }],
     }).compile();
 
-    controller = module.get<BlueprintController>(BlueprintController);
+    controller = module.get<FarmersController>(FarmersController);
   });
 
   it('should be defined', () => {
@@ -19,8 +20,8 @@ describe('Blueprint Controller', () => {
 
   describe('create', () => {
     it('should return all blueprint', async () => {
-      const result = { 'data': 'TODO: implement blueprint POST endpoint' };
-      expect(await controller.create()).toEqual(result);
+      const farmer = { username: 'username', password: 'testpass', firstName: 'firstName', lastName: 'lastName', address: 'teststreet' };
+      expect(await controller.create(farmer)).toBe(farmer);
     });
   });
 

@@ -21,6 +21,8 @@ export class Main {
     await databaseService.createDB('_replicator');
     await databaseService.createDB('_global_changes');
     await databaseService.createDB('location');
+    await databaseService.createDB('donors');
+    await databaseService.createDB('farmers');
   }
 }
 
