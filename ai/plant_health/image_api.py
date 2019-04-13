@@ -2,24 +2,29 @@
 import os
 
 # Public libraries
-from flask import Flask, request
+from flask import Flask, request, render_template
 import disease_classify
 import subprocess as sp
 import numpy as np
 
-app = Flask()
+app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = 'tmp'
 
-@app.route('/imupload', method=['GET', 'POST'])
+@app.route("/")
+def home():
+    return render_template("test_api_page.html")
+
+@app.route('/imupload', methods =['GET', 'POST'])
 def measure_disease():
     if request.method == 'POST':
         f = request.files['file']
         make_tmp_dir()
-        answer_str = sp.call(["python3", "disease_classify.py", f]) # add keyword arguments
-        disease_classify.run_file()
-        rm_tmp_dir()
-        return answer_str
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'],f.filename))
+        answer_str = sp.call(["python3", "disease_classify.py", f.filename]) # add keyword arguments
+        disease_classify.run_file(os.path.join(app.config['UPLOAD_FOLDER'],f.filename))
+        #rm_tmp_dir()
+        return str(answer_str['disease'])
 
 def make_tmp_dir():
     tmp_path = os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'])
@@ -31,3 +36,6 @@ def make_tmp_dir():
 
 def rm_tmp_dir():
     os.rmdir(app.config['UPLOAD_FOLDER'])
+
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -352,10 +352,12 @@ def get_cmd_args():
 
 
 def run_file(file_path):
+    print("filepath: " + file_path)
+    args = {}
     args['image'] = file_path
     args['model'] = 'inceptionv3'
-    args['segment'] = 'True'
-    args['species'] = ''
+    args['segment'] = False
+    args['species'] = 'apple'
 
     plant_classification = {}
 
@@ -383,4 +385,6 @@ def run_file(file_path):
     else:
         print("Make Sure Your Command is Correct")
 
+    print("plant_classification" + str(plant_classification))
     return plant_classification
+
