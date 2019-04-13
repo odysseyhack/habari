@@ -7,12 +7,12 @@ import { fromEvent } from 'rxjs';
   styleUrls: ['./particles.component.css']
 })
 export class ParticlesComponent implements AfterViewInit, OnDestroy {
-  number = 200;
-  size = 0.25;
+  number = 400;
+  size = 0.4;
   linkDistance = 100;
-  linkWidth = 1;
-  moveSpeed = 1;
-  size = 2;
+  linkWidth = 0.5;
+  moveSpeed = 1.5;
+  size = 1.5;
   repulseDistance = 140;
   repulseDuration = 0.4;
   canvasHeight = 0;
