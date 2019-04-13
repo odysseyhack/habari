@@ -86,7 +86,10 @@ def draw_random_shape(image, pos, at_x = True):
 		draw.ellipse([width- int(shape_size/2),pos, width+ int(shape_size/2),pos + shape_size],(254,254,254))
 
 
-def draw_damage_at(image, x,y, size):
+def draw_damage_at(image):
+	random_pos = generate_random_pos_for_image(image)
+	random_size = generate_random_size_for_damage(image)
+	x,y,size = random_pos[0], random_pos[1], random_size
 	newimg = Image.new("RGB", (size, size), "white")
 	darkening_gaussian_kernel = gaussian_kernel(size, 1)
 	noise_kernel = generate_random_noise_kernel(size)
@@ -153,9 +156,7 @@ def add_random_damage_to_plant(image):
 	no_damage_pts = int(random.uniform(0,1) * 20)
 	print(no_damage_pts)
 	for i in range(no_damage_pts):
-		random_pos = generate_random_pos_for_image(image)
-		random_size = generate_random_size_for_damage(image)
-		draw_damage_at(image,random_pos[0], random_pos[1], random_size)
+		draw_damage_at(image)
 	image.show()
 
 image = acquireImages()[0]
