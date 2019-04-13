@@ -1,53 +1,50 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { ShipmentsController } from './shipments.controller';
+import { ShipmentService } from '../../../entities/services/shipment/shipment.service';
 
 describe('Shipments Controller', () => {
-  let controller: ShipmentsController;
+  let shipmentsController: ShipmentsController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ShipmentsController],
-    }).compile();
-
-    controller = module.get<ShipmentsController>(ShipmentsController);
+    const shipmentService = new ShipmentService();
+    shipmentsController = new ShipmentsController(shipmentService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(shipmentsController).toBeDefined();
   });
 
   describe('create', () => {
     it('should return all shipments', async () => {
       const result = { 'data': 'TODO: implement shipments POST endpoint' };
-      expect(await controller.create()).toEqual(result);
+      expect(await shipmentsController.create()).toEqual(result);
     });
   });
 
   describe('findAll', () => {
     it('should return all shipments', async () => {
       const result = { 'data': 'TODO: implement shipments GET endpoint' };
-      expect(await controller.findAll()).toEqual(result);
+      expect(await shipmentsController.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
     it('should return all shipments', async () => {
       const result = { 'data': 'TODO: implement shipments GET:id endpoint', 'id': '42' };
-      expect(await controller.findById('42')).toEqual(result);
+      expect(await shipmentsController.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
     it('should return all shipments', async () => {
       const result = { 'data': 'TODO: implement shipments PUT:id endpoint', 'id': '42' };
-      expect(await controller.update('42')).toEqual(result);
+      expect(await shipmentsController.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
     it('should return all shipments', async () => {
       const result = { 'data': 'TODO: implement shipments DELETE:id endpoint', 'id': '42' };
-      expect(await controller.remove('42')).toEqual(result);
+      expect(await shipmentsController.remove('42')).toEqual(result);
     });
   });
 });

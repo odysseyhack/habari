@@ -1,53 +1,50 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { MaterialsController } from './materials.controller';
+import { MaterialService } from '../../../entities/services/material/material.service';
 
 describe('Materials Controller', () => {
-  let controller: MaterialsController;
+  let materialsController: MaterialsController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [MaterialsController],
-    }).compile();
-
-    controller = module.get<MaterialsController>(MaterialsController);
+    const materialsService = new MaterialService();
+    materialsController = new MaterialsController(materialsService)
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(materialsController).toBeDefined();
   });
 
   describe('create', () => {
     it('should return all materials', async () => {
       const result = { 'data': 'TODO: implement materials POST endpoint' };
-      expect(await controller.create()).toEqual(result);
+      expect(await materialsController.create()).toEqual(result);
     });
   });
 
   describe('findAll', () => {
     it('should return all materials', async () => {
       const result = { 'data': 'TODO: implement materials GET endpoint' };
-      expect(await controller.findAll()).toEqual(result);
+      expect(await materialsController.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
     it('should return all materials', async () => {
       const result = { 'data': 'TODO: implement materials GET:id endpoint', 'id': '42' };
-      expect(await controller.findById('42')).toEqual(result);
+      expect(await materialsController.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
     it('should return all materials', async () => {
       const result = { 'data': 'TODO: implement materials PUT:id endpoint', 'id': '42' };
-      expect(await controller.update('42')).toEqual(result);
+      expect(await materialsController.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
     it('should return all materials', async () => {
       const result = { 'data': 'TODO: implement materials DELETE:id endpoint', 'id': '42' };
-      expect(await controller.remove('42')).toEqual(result);
+      expect(await materialsController.remove('42')).toEqual(result);
     });
   });
 });
