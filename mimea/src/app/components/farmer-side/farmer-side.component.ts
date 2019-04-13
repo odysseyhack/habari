@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './farmer-side.component.html',
   styleUrls: ['./farmer-side.component.scss']
 })
-export class FarmerSideComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class FarmerSideComponent {
+  panelOpenState = false;
 }

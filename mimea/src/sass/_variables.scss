@@ -6,7 +6,7 @@ $primary-color-dark: #1B5E20;
 $secondary-color: #795548;
 $secondary-color-light: #EFEBE9;
 $secondary-color-dark: #4E342E;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
+$success-color: green;
+$error-color: red;
 
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: blue;

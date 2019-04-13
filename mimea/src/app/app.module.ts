@@ -9,7 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material/tabs';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, MatCardModule, MatToolbarModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,14 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserModule,
     routing,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     appRoutingProviders

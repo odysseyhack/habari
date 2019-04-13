@@ -1,3 +1,93 @@
-<p>
-  farmer-side works!
-</p>
+<div class="container">
+<div class="row">
+  <div class="col-md-4">
+      <h1>News</h1>
+      <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+  </div>
+  <div class="col-md-4">
+    <h1>Fields</h1>
+    <mat-accordion>
+      <!-- this is the header of the fields -->
+      <mat-expansion-panel [disabled]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Field
+              </mat-panel-title>
+              <mat-panel-description>
+                Health
+              </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <!-- this are the accordions  -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Field A
+          </mat-panel-title>
+          <mat-panel-description>
+            85%
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <p>
+            Report date:
+            14-04-2019
+        </p>
+            <img mat-card-image src="http://www.sunrise21.org.au/userfiles/ndvi.jpg" alt="Photo of a crop">
+      </mat-expansion-panel>
+      <!-- accordion ends here -->
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Field b
+            </mat-panel-title>
+            <mat-panel-description>
+              25%
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <p>
+              Report date:
+              14-04-2019
+          </p>
+              <img mat-card-image src="http://www.sunrise21.org.au/userfiles/ndvi.jpg" alt="Photo of a crop">
+        </mat-expansion-panel>
+    </mat-accordion>
+    </div>
+    <div class="col-md-4">
+        <h1>Notifications</h1>
+        <mat-toolbar color="#FAFAFA">
+            <mat-toolbar-row>
+              <span>Habari Solution available</span>
+                  <mat-icon class="icon-warning" aria-hidden="false" aria-label="Example warning icon">warning</mat-icon>
+            </mat-toolbar-row>
+          
+            <mat-toolbar-row>
+              <span>Second Line</span>
+            </mat-toolbar-row>
+          
+            <mat-toolbar-row>
+              <span>Third Line</span>
+            </mat-toolbar-row>
+          </mat-toolbar>
+    </div>
+  </div>
+</div> 
