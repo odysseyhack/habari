@@ -5,6 +5,6 @@ export class SimulateController {
 
   @Post()
   public simulate(): object {
-    return { 'data': 'TODO: implement simulate POST endpoint' };
+    return {'data': 'TODO: implement simulate POST endpoint' };
   }
 }

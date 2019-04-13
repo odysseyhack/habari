@@ -15,35 +15,53 @@ describe('Reports Controller', () => {
 
   describe('create', () => {
     it('should return all reports', async () => {
-      const result = { 'data': 'TODO: implement reports POST endpoint' };
+      const result = {
+        'data': 'TODO: implement reports POST endpoint'
+      };
+
       expect(await reportsController.create()).toEqual(result);
     });
   });
 
   describe('findAll', () => {
     it('should return all reports', async () => {
-      const result = { 'data': 'TODO: implement reports GET endpoint' };
+      const result = {
+        'data': 'TODO: implement reports GET endpoint'
+      };
+
       expect(await reportsController.findAll()).toEqual(result);
     });
   });
 
   describe('findById', () => {
     it('should return all reports', async () => {
-      const result = { 'data': 'TODO: implement reports GET:id endpoint', 'id': '42' };
+      const result = {
+        'data': 'TODO: implement reports GET:id endpoint',
+        'id': '42'
+      };
+
       expect(await reportsController.findById('42')).toEqual(result);
     });
   });
 
   describe('update', () => {
     it('should return all reports', async () => {
-      const result = { 'data': 'TODO: implement reports PUT:id endpoint', 'id': '42' };
+      const result = {
+        'data': 'TODO: implement reports PUT:id endpoint',
+        'id': '42'
+      };
+
       expect(await reportsController.update('42')).toEqual(result);
     });
   });
 
   describe('remove', () => {
     it('should return all reports', async () => {
-      const result = { 'data': 'TODO: implement reports DELETE:id endpoint', 'id': '42' };
+      const result = {
+        'data': 'TODO: implement reports DELETE:id endpoint',
+        'id': '42'
+      };
+
       expect(await reportsController.remove('42')).toEqual(result);
     });
   });
