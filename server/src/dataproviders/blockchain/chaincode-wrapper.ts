@@ -91,7 +91,7 @@ export class ChaincodeWrapper {
   private async instantiateOrUpgradeChaincode(instantiateOrUpgrade: 'instantiate' | 'upgrade'): Promise<void> {
     this.helper.debug(`Going to ${instantiateOrUpgrade} chaincode (this may take a minute)...`);
 
-    const proposal: ChaincodeInstantiateUpgradeRequest = {
+    const proposal: ChaincodeInstantiateUpgradeRequest | any = {
       txId: this.client.newTransactionID(true),
       ...this.basicChaincodeInfo, // Take the fields from basicChaincodeInfo and add them to the request.
     };

@@ -2,18 +2,3 @@
 @import '../sass/variables';
 @import '../sass/styles.scss';
 @import '../sass/fonts';
-
-.not-logged {
-    @include gradient-vertical($primary-color, $primary-color-light);
-    height: 100%;
-    width: 100%;
-    .container {
-        .text-center {
-            img {
-                height: 600px;
-                margin-bottom: 5%;
-                border-radius: 5%;
-                }
-            }
-    }
-}
