@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { AddMaterialsComponent } from './add-materials/add-materials.component';
+import { Material } from '../../types/Material';
 
-export interface Material {
-  name: string;
-  weight: number;
-  symbol: string;
-}
+// >>>>>>> yo dawg, i heard u liked tables, so I put a table in your table, so you can table while you table
 
 const materialData: Material[] = [
-  {name: 'Plastic (ABS)', weight: 1.0079, symbol: 'Ready for pickup'},
-  {name: 'Copper', weight: 4.0026, symbol: 'Ready for pickup'},
-  {name: 'Cotton', weight: 6.941, symbol: 'Pickup in 1 hour'},
-  {name: 'Aluminum', weight: 9.0122, symbol: 'Ready for pickup'}
+  {name: 'Plastic (ABS)', weight: 1.0079, status: 'Ready for pickup'},
+  {name: 'Copper', weight: 4.0026, status: 'Ready for pickup'},
+  {name: 'Cotton', weight: 6.941, status: 'Pickup in 1 hour'},
+  {name: 'Aluminum', weight: 9.0122, status: 'Ready for pickup'}
 ];
 
 @Component({
@@ -22,9 +19,8 @@ const materialData: Material[] = [
 })
 export class DonatorSideComponent {
 
-  displayedColumns: string[] = ['name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'weight', 'status'];
   dataSource = materialData;
- 
   constructor(public dialog: MatDialog) {}
 
   openMaterials(): void {
@@ -36,5 +32,4 @@ export class DonatorSideComponent {
       console.log('The dialog was closed');
     });
   }
-
 }
