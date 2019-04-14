@@ -7,5 +7,8 @@
     "startApp": "docker-compose up",
     "startBlockchain": "cd blockchain && npm run startHLF",
     "stopAll": "docker rm -f $(docker ps -aq)"
+  },
+  "dependencies": {
+    "angular-particle": "^1.0.4"
   }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {appRoutingProviders, routing} from './app-routing';
 import { AppComponent } from './app.component';
 import { FarmerSideComponent } from './components/farmer-side/farmer-side.component';
+import {DialogOverviewExampleDialog } from './components/farmer-side/Dialog-component/dialog-overview-example-dialog.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DonatorSideComponent } from './components/donator-side/donator-side.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,9 +11,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, MatCardModule, MatToolbarModule, MatIconModule, MatTableModule } from '@angular/material';
+import {MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule} from '@angular/material';
+import { MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule} from '@angular/material';
 
 @NgModule({
+  entryComponents: [DialogOverviewExampleDialog],
   declarations: [
     AppComponent,
     FarmerSideComponent,
@@ -20,7 +23,8 @@ import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule,
     DonatorSideComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule
+    MatDialogModule
   ],
   providers: [
     appRoutingProviders
@@ -42,3 +46,5 @@ import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
