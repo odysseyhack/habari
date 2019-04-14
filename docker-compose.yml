@@ -35,6 +35,15 @@ services:
       - ./blockchain/config:/usr/src/app/config
     command: npm run start --host 0.0.0.0
 
+  ai:
+    build: ai
+    ports:
+      - "7777:5000"
+    volumes:
+      - ./ai/image_processing:/usr/src/app/image_processing
+      - ./ai/data:/usr/src/app/data
+
+
   privatedb:
     image: couchdb
     ports:

@@ -89,7 +89,7 @@ def draw_random_shape(image, pos, at_x = True):
 def draw_damage_at(image):
 	random_pos = generate_random_pos_for_image(image)
 	random_size = generate_random_size_for_damage(image)
-	x,y,size = random_pos[0], random_pos[1], random_size
+	x,y,size = random_pos[0], random_pos[1],  random_size
 	newimg = Image.new("RGB", (size, size), "white")
 	darkening_gaussian_kernel = gaussian_kernel(size, 1)
 	noise_kernel = generate_random_noise_kernel(size)
