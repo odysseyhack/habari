@@ -1,7 +1,8 @@
 import { CropType } from '../enums/CropType';
+import { Location } from '../privateDBEntities/location';
 
 export class Field {
-  public readonly id: string;
-  public location?: Location;
-  public cropType: CropType;
+  public constructor(public readonly id: string,
+                     public cropType: CropType,
+                     public location?: Location) { }
 }

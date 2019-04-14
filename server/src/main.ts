@@ -9,8 +9,8 @@ export class Main {
     app.enableCors();
 
 
-    this.createPublicDBDatabases();
-    new BlockchainService().start();
+    // this.createPublicDBDatabases();
+    await new BlockchainService().start();
 
     await app.listen(3000);
   }

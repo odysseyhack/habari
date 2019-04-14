@@ -5,7 +5,9 @@ import { ChaincodeWrapper } from './chaincode-wrapper';
 import * as Client from 'fabric-client';
 import * as path from 'path';
 import { BasicChaincodeInfo } from '../../entities/basicChainCodeInfo.interface';
-import { ChaincodeFunctionType } from '../../entities/enums/ChainCodeFunctionType.enum';
+import { Field } from '../../entities/blockchainEntities/field';
+import { Location } from '../../entities/privateDBEntities/location';
+import { CropType } from '../../entities/enums/CropType';
 
 const CONFIG_PATH = 'network/connectionprofile.localhost.org1.yaml';
 
@@ -23,8 +25,11 @@ export class BlockchainService {
     const chaincode = new ChaincodeWrapper(client, channelWrapper.channel, mychaincode);
     await chaincode.initialize();
 
-    // const result = await chaincode.query(ChaincodeFunctionType.GetMarblesByRange, ['', '']);
-    // console.log('Result:', result);
+    const location = new Location('karel', 'hans', 'peppie');
+    const field = new Field('field1', CropType.CORN, location);
+
+    const result = await chaincode.invoke('createField', [JSON.stringify(field)]);
+    console.log('Result:', result);
 
     // return chaincode.getInstantiatedChaincode();
   }
@@ -40,7 +45,7 @@ export class BlockchainService {
 
   private getBasicChaincodeInfo(): BasicChaincodeInfo {
     return {
-      chaincodeVersion: '1',
+      chaincodeVersion: '4',
       chaincodeId:      'mychaincode',
       chaincodePath:    path.join('chaincode'),
       chaincodeType:    'node',
