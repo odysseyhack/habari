@@ -1,6 +1,6 @@
 export interface Material {
   name: string;
   weight: number;
-  status: string;
+  status?: string;
   location?: string;
 }
