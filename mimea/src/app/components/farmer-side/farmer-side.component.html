@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-xs-12 col-md-4">
       <h1>News</h1>
       <mat-card class="example-card">
           <mat-card-header>
@@ -18,11 +18,11 @@
           </mat-card-content>
           <mat-card-actions>
             <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
+            <button mat-button >SHARE</button>
           </mat-card-actions>
         </mat-card>
   </div>
-  <div class="col-md-4">
+  <div class="col-xs-12 col-md-4">
     <h1>Fields</h1>
     <mat-accordion>
       <!-- this is the header of the fields -->
@@ -72,10 +72,10 @@
         </mat-expansion-panel>
     </mat-accordion>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs-12 col-md-4">
         <h1>Notifications</h1>
         <mat-toolbar color="#FAFAFA">
-            <mat-toolbar-row>
+            <mat-toolbar-row (click)="openDialog()">
               <span>Habari Solution available</span>
                   <mat-icon class="icon-warning" aria-hidden="false" aria-label="Example warning icon">warning</mat-icon>
             </mat-toolbar-row>
