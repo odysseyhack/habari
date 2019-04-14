@@ -11,8 +11,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule} from '@angular/material';
+import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, MatTableModule } from '@angular/material';
 import { MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule} from '@angular/material';
+import { DemandComponent } from './components/dashboard/demand/demand.component';
+import { SupplyComponent } from './components/dashboard/supply/supply.component';
+import { TransitComponent } from './components/dashboard/transit/transit.component';
+import { RealizedComponent } from './components/dashboard/realized/realized.component';
 
 @NgModule({
   entryComponents: [DialogOverviewExampleDialog],
@@ -24,7 +28,11 @@ import { MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule} from '
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DemandComponent,
+    SupplyComponent,
+    TransitComponent,
+    RealizedComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,8 @@ import { MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule} from '
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     appRoutingProviders

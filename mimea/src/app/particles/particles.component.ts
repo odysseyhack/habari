@@ -12,7 +12,6 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   linkDistance = 100;
   linkWidth = 0.5;
   moveSpeed = 1.5;
-  size = 1.5;
   repulseDistance = 30;
   repulseDuration = 0.4;
   canvasHeight = 0;

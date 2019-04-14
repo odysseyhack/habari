@@ -1,8 +1,16 @@
 <div class="container">
   <mat-tab-group mat-align-tabs="center" animationDuration="2000ms">
-    <mat-tab label="Demand"> Demand </mat-tab>
-    <mat-tab label="Supply"> Supply </mat-tab>
-    <mat-tab label="In transit"> In transit </mat-tab>
-    <mat-tab label="Realized"> Realized </mat-tab>
+    <mat-tab label="Demand">
+      <app-transit></app-transit>
+    </mat-tab>
+    <mat-tab label="Supply">
+      <app-supply></app-supply>
+    </mat-tab>
+    <mat-tab label="In transit">
+      <app-transit></app-transit>
+    </mat-tab>
+    <mat-tab label="Realized">
+      <app-realized></app-realized>
+    </mat-tab>
   </mat-tab-group>
  </div>
