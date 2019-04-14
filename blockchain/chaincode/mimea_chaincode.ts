@@ -16,30 +16,29 @@ class Chaincode {
   }
 
   public async Invoke(stub: any): Promise<any> {
-    console.info(`Transaction ID: ${stub.getTxID()}`);
-    console.info(util.format('Args: %j', stub.getArgs()));
-
-    const functionAndParameters = stub.getFunctionAndParameters();
-    console.info(functionAndParameters);
-
-    let payload: any;
     try {
-      switch (functionAndParameters.fcn) {
-        case 'createField':
-          payload = await this.createField(stub, functionAndParameters.params);
-          break;
-        default: {
-          console.log('no function of name:' + functionAndParameters.fcn + ' found');
-
-          return shim.error('Received unknown function ' + functionAndParameters.fcn + ' invocation');
-        }
-      }
+      let payload = await this.callCorrectFunction(stub);
 
       return shim.success(payload);
     } catch (error) {
       console.log(error);
 
       return shim.error(error);
+    }
+  }
+
+  private async callCorrectFunction(stub: any) {
+    const functionAndParameters = stub.getFunctionAndParameters();
+    console.info(functionAndParameters);
+
+    switch (functionAndParameters.fcn) {
+      case 'createField':
+        return await this.createField(stub, functionAndParameters.params);
+      default: {
+        console.log('no function of name:' + functionAndParameters.fcn + ' found');
+
+        return shim.error('Received unknown function ' + functionAndParameters.fcn + ' invocation');
+      }
     }
   }
 
@@ -67,6 +66,7 @@ class Chaincode {
 
     return Buffer.from(JSON.stringify(parsedField));
   }
+
   //
   // private async createModel(stub: any, args: string[]): Promise<Buffer> {
   //   if (args.length !== 4) {
