@@ -17,9 +17,10 @@ import { DemandComponent } from './components/dashboard/demand/demand.component'
 import { SupplyComponent } from './components/dashboard/supply/supply.component';
 import { TransitComponent } from './components/dashboard/transit/transit.component';
 import { RealizedComponent } from './components/dashboard/realized/realized.component';
+import { AddMaterialsComponent } from './components/donator-side/add-materials/add-materials.component';
 
 @NgModule({
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog, AddMaterialsComponent],
   declarations: [
     AppComponent,
     FarmerSideComponent,
@@ -32,7 +33,8 @@ import { RealizedComponent } from './components/dashboard/realized/realized.comp
     DemandComponent,
     SupplyComponent,
     TransitComponent,
-    RealizedComponent
+    RealizedComponent,
+    AddMaterialsComponent
   ],
   imports: [
     BrowserModule,

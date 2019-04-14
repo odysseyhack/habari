@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import { AddMaterialsComponent } from './add-materials/add-materials.component';
 
 export interface Material {
   name: string;
@@ -18,13 +20,21 @@ const materialData: Material[] = [
   templateUrl: './donator-side.component.html',
   styleUrls: ['./donator-side.component.scss']
 })
-export class DonatorSideComponent implements OnInit {
-
-  constructor() { }
+export class DonatorSideComponent {
 
   displayedColumns: string[] = ['name', 'weight', 'symbol'];
   dataSource = materialData;
-  ngOnInit() {
+ 
+  constructor(public dialog: MatDialog) {}
+
+  openMaterials(): void {
+    const dialogRef = this.dialog.open(AddMaterialsComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

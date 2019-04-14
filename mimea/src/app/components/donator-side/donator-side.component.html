@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <h1>Materials</h1>
-      <button button="submit" mat-raised-button color="primary">
+      <button button="submit" mat-raised-button color="primary" (click)="openMaterials()">
         <mat-icon>add</mat-icon> Add Material
       </button>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -30,16 +30,16 @@
       <h1>Notifications</h1>
       <mat-toolbar color="#FAFAFA">
         <mat-toolbar-row>
-          <span>Habari Solution available</span>
-          <mat-icon class="icon-warning" aria-hidden="false" aria-label="Example warning icon">warning</mat-icon>
+          <span>Hurray your material has a new life</span>
+          <mat-icon class="icon-warning" aria-hidden="false" aria-label="Example checkmark icon">checkmark</mat-icon>
         </mat-toolbar-row>
 
         <mat-toolbar-row>
-          <span>Second Line</span>
+          <span>A drone will be picking up your materials soon</span>
         </mat-toolbar-row>
 
         <mat-toolbar-row>
-          <span>Third Line</span>
+          <span>You have helped maintaining 3 crops this week</span>
         </mat-toolbar-row>
       </mat-toolbar>
     </div>
