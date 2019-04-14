@@ -10,7 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, MatCardModule, MatToolbarModule, MatIconModule} from '@angular/material';
+import { MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, MatCardModule, MatToolbarModule, MatIconModule, MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import {MatTabsModule, MatExpansionModule, MatNativeDateModule, MatInputModule, 
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [
     appRoutingProviders
