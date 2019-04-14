@@ -28,27 +28,6 @@ class Chaincode {
         case 'createField':
           payload = await this.createField(stub, functionAndParameters.params);
           break;
-        // case 'readModel':
-        //   payload = await this.readModel(stub, functionAndParameters.params);
-        //   break;
-        // case 'deleteModel':
-        //   payload = await this.deleteModel(stub, functionAndParameters.params);
-        //   break;
-        // case 'transferModel':
-        //   payload = await this.transferModel(stub, functionAndParameters.params);
-        //   break;
-        // case 'getModelsByRange':
-        //   payload = await this.getModelsByRange(stub, functionAndParameters.params);
-        //   break;
-        // case 'getModels':
-        //   payload = await this.getModels(stub, functionAndParameters.params);
-        //   break;
-        // case 'getAllResults':
-        //   payload = await this.getAllResults(stub, functionAndParameters.params);
-        //   break;
-        // case 'getQueryResult':
-        //   payload = await this.getQueryResult(stub, functionAndParameters.params);
-        //   break;
         default: {
           console.log('no function of name:' + functionAndParameters.fcn + ' found');
 
