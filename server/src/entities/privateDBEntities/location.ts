@@ -1,5 +1,6 @@
-export class Field {
-  private latitude: string;
-  private longitude: string;
-  private height?: string;
+export class Location {
+  public constructor(public latitude: string,
+                     public longitude: string,
+                     public height?: string) { }
+
 }
